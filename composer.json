@@ -1,0 +1,22 @@
+{
+    "name": "ts/restclient_ui",
+    "type": "typo3-cms-extension",
+    "description": "A backend module to consume RESTful Web Services", 
+    "homepage": "https://typo3.org/extensions/repository/view/restclient_ui",
+    "authors": [
+        {
+            "name": "Tommaso Sacramone",
+            "email": "tommasosacramone.www@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "typo3/cms-core": ">=6.2.0",
+        "restclient" : ">=1.1.2"        
+    },       
+    "keywords": ["restclient", "rest", "client", "restful", "http", "webservices", "ui", "tool"],
+    "support": {
+        "issues": "https://forge.typo3.org/projects/extension-restclient"
+    },
+    "version": "1.0.0"
+}

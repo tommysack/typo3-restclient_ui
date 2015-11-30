@@ -1,0 +1,37 @@
+ # cat=basic//5; type=boolean; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_use_restclient_settings
+client_use_restclient_settings = 
+
+ # cat=basic//8; type=options[=,info=1,warning=2,error=3,critical=4]; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.error_log
+error_log = 
+
+ # cat=basic//10; type=integer; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_connection_timeout
+client_connection_timeout = 
+
+ # cat=basic//20; type=integer; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_timeout
+client_timeout = 
+
+ # cat=basic//30; type=boolean; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_follow_redirect
+client_follow_redirect = 
+
+# cat=basic//40; type=integer; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_max_redirect
+client_max_redirect = 
+
+ # cat=basic//50; type=boolean; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_proxy_typo3
+client_proxy_typo3 = false
+
+ # cat=basic//60; type=string; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_proxy_address
+client_proxy_address =
+
+ # cat=basic//70; type=integer; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_proxy_port
+client_proxy_port = 
+
+ # cat=basic//80; type=string; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_proxy_credentials
+client_proxy_credentials =
+
+ # cat=basic//90; type=options[=,basic=basic,digest=digest]; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_proxy_auth_scheme
+client_proxy_auth_scheme =
+
+ # cat=basic//100; type=string; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_user_agent
+client_user_agent =
+
+

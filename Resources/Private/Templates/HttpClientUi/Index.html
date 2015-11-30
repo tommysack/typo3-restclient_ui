@@ -1,0 +1,44 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+  
+  <h2 id="rcui-request-header"><f:translate key="rcui.header.request" /></h2>      
+  <f:form id="rcui-request" action="send"> 
+    <div class="rcui-field">   
+      <span class="block w20"><f:translate key="rcui.field.method" /></span>
+      <f:form.select id="rcui-input-method" name="request[method]" options="{methods}" />
+    </div>
+    <div class="rcui-field">   
+      <span class="block w20"><f:translate key="rcui.field.url" /></span>
+      <f:form.textfield id="rcui-input-url" name="request[url]" class="w70" />    
+    </div>
+    <div class="rcui-field"> 
+      <span class="block rcui-header"><f:translate key="rcui.field.headers" /></span>
+      <div class="rcui-rows">      
+        <f:form.button type="button" id="rcui-button-add-header">+</f:form.button>     
+      </div>
+    </div>   
+    <div class="rcui-field"> 
+      <span class="block rcui-header"><f:translate key="rcui.field.data" /></span>
+      <div class="rcui-rows"> 
+        <f:form.button type="button" id="rcui-button-add-data">+</f:form.button>     
+      </div>
+    </div>
+  </f:form>
+  <f:form.button type="button" id="rcui-button-cancel-request"><f:translate key="rcui.button.cancel" /></f:form.button><f:form.button type="button" id="rcui-button-go"><f:translate key="rcui.button.send" /></f:form.button>
+  
+  <h2 id="rcui-response-header"><f:translate key="rcui.header.response" /></h2>
+  
+  <script id="rcui-template-messsage" type="text/x-ts-rcui-template-message">    
+    <h3>###HEADER###</h3>
+    <p>###TEXT###</p>
+  </script>
+  
+  <script id="rcui-template-response" type="text/x-ts-rcui-template-response">
+    <h3>###HEADER###</h3>
+    <p>###TEXT###</p>
+  </script>
+  
+  <div id="rcui-response"></div>
+  
+</f:section>

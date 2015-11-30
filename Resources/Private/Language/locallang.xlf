@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2015-10-14T15:00:00Z" product-name="restclient_ui">
+    <header/>
+    <body>      
+      <trans-unit id="mlang_labels_tablabel" xml:space="preserve">
+        <source>Rest client UI</source>
+      </trans-unit>
+      <trans-unit id="mlang_labels_tabdescr" xml:space="preserve">
+        <source>Rest client user interface</source>
+      </trans-unit>
+      <trans-unit id="mlang_tabs_tab" xml:space="preserve">
+        <source>Rest client UI</source>
+      </trans-unit>
+      
+      <trans-unit id="extmng.client_use_restclient_settings" xml:space="preserve">
+        <source>Rest Client settings: The restclient ui module will use the restclient basic configuration, it will ignore the next fields.</source>
+      </trans-unit>
+      <trans-unit id="extmng.error_log" xml:space="preserve">
+        <source>Error Log: If an error occurs log is written to file typo3temp/logs/typo3.log.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_connection_timeout" xml:space="preserve">
+        <source>Client Connection Timeout: Max seconds allowed to connect to the server.</source>
+      </trans-unit> 
+      <trans-unit id="extmng.client_timeout" xml:space="preserve">
+        <source>Client Timeout: Max seconds allowed to individual calls.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_proxy_typo3" xml:space="preserve">
+        <source>Client Proxy Typo3: Use the system HTTP proxy (TYPO3_CONF_VARS[HTTP][proxy_*]).</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_proxy_address" xml:space="preserve">
+        <source>Client Proxy Address: The proxy address to send the requests.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_proxy_port" xml:space="preserve">
+        <source>Client Proxy Port: The proxy port to use.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_proxy_credentials" xml:space="preserve">
+        <source>Client Proxy Credentials: The proxy credentials to use.</source>
+      </trans-unit>      
+      <trans-unit id="extmng.client_proxy_auth_scheme" xml:space="preserve">
+        <source>Client Proxy Auth Scheme: Authentication method.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_follow_redirect" xml:space="preserve">
+        <source>Client Follow Redirect: Client follow redirect.</source>
+      </trans-unit>
+      <trans-unit id="extmng.client_max_redirect" xml:space="preserve">
+        <source>Client Max Redirect: Client maximum number of redirect.</source>
+      </trans-unit>      
+      <trans-unit id="extmng.client_user_agent" xml:space="preserve">
+        <source>Client User Agent: Use any User Agent you choose.</source>
+      </trans-unit>
+      
+      <trans-unit id="rcui.header.request" xml:space="preserve">
+        <source>Request</source>
+      </trans-unit>
+      <trans-unit id="rcui.header.response" xml:space="preserve">
+        <source>Response</source>
+      </trans-unit>
+      <trans-unit id="rcui.field.method" xml:space="preserve">
+        <source>Method</source>
+      </trans-unit>
+      <trans-unit id="rcui.field.url" xml:space="preserve">
+        <source>URL resource</source>
+      </trans-unit>
+      <trans-unit id="rcui.field.headers" xml:space="preserve">
+        <source>Headers</source>
+      </trans-unit>
+      <trans-unit id="rcui.field.data" xml:space="preserve">
+        <source>Body</source>
+      </trans-unit>
+      <trans-unit id="rcui.button.header.add" xml:space="preserve">
+        <source>ADD</source>
+      </trans-unit>
+      <trans-unit id="rcui.button.data.add" xml:space="preserve">
+        <source>ADD</source>
+      </trans-unit>
+      <trans-unit id="rcui.button.cancel" xml:space="preserve">
+        <source>Cancel</source>
+      </trans-unit>
+      <trans-unit id="rcui.button.send" xml:space="preserve">
+        <source>Send</source>
+      </trans-unit>
+      
+      
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,12 @@
+{namespace rcui=TS\RestclientUi\ViewHelpers}
+
+<f:be.container addCssFile="{f:uri.resource(path:'css/rcui.css')}" addJsFile="{f:uri.resource(path:'js/rcui.js')}" loadJQuery="1">
+  <div class="typo3-fullDoc">
+    <div id="typo3-docbody">
+      <div id="typo3-inner-docbody">        
+        <f:flashMessages renderMode="div" />
+        <f:render section="main" />
+      </div>
+    </div>
+  </div>
+</f:be.container>
