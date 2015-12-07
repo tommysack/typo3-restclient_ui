@@ -1,7 +1,13 @@
-{namespace rcui=TS\RestclientUi\ViewHelpers}
-
 <f:be.container addCssFile="{f:uri.resource(path:'css/rcui.css')}" addJsFile="{f:uri.resource(path:'js/rcui.js')}" loadJQuery="1">
   <div class="typo3-fullDoc">
+    <div id="typo3-docheader">
+			<div class="typo3-docheader-functions">
+        <f:be.menus.actionMenu>
+					<f:be.menus.actionMenuItem label="{f:translate(key:'rcui.menu.main')}" controller="HttpClientUi" action="index" />
+          <f:be.menus.actionMenuItem label="{f:translate(key:'rcui.menu.history')}" controller="History" action="index" />
+        </f:be.menus.actionMenu>
+      </div>
+    </div>
     <div id="typo3-docbody">
       <div id="typo3-inner-docbody">        
         <f:flashMessages renderMode="div" />

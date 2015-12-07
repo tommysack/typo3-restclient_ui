@@ -184,5 +184,33 @@ This extension provides a basic configuration from Backend module “Extension M
 
    Default
        Empty
+
+.. container:: table-row
+
+   Property
+         history_enable
+
+   Data type
+         Boolean
+
+   Description
+         Enable History.
+
+   Default
+       FALSE
+
+.. container:: table-row
+
+   Property
+         history_storage
+
+   Data type
+         Integer
+
+   Description
+         The uid of history folder.                 
+
+   Default
+         Empty
               
 .. ###### END~OF~TABLE ######

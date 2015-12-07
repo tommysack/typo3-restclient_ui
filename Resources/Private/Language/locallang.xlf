@@ -49,6 +49,12 @@
       <trans-unit id="extmng.client_user_agent" xml:space="preserve">
         <source>Client User Agent: Use any User Agent you choose.</source>
       </trans-unit>
+      <trans-unit id="extmng.history_enable" xml:space="preserve">
+        <source>History: Enable the history.</source>
+      </trans-unit>
+      <trans-unit id="extmng.history_storage" xml:space="preserve">
+        <source>History: The history storage uid.</source>
+      </trans-unit>
       
       <trans-unit id="rcui.header.request" xml:space="preserve">
         <source>Request</source>
@@ -56,6 +62,10 @@
       <trans-unit id="rcui.header.response" xml:space="preserve">
         <source>Response</source>
       </trans-unit>
+      <trans-unit id="rcui.header.history" xml:space="preserve">
+        <source>History</source>
+      </trans-unit>
+      
       <trans-unit id="rcui.field.method" xml:space="preserve">
         <source>Method</source>
       </trans-unit>
@@ -80,6 +90,51 @@
       <trans-unit id="rcui.button.send" xml:space="preserve">
         <source>Send</source>
       </trans-unit>
+      <trans-unit id="rcui.button.remove" xml:space="preserve">
+        <source>Remove</source>
+      </trans-unit>
+      <trans-unit id="rcui.button.edit" xml:space="preserve">
+        <source>Edit</source>
+      </trans-unit>
+      
+      <trans-unit id="rcui.menu.main" xml:space="preserve">
+        <source>REST Request</source>
+      </trans-unit>
+      <trans-unit id="rcui.menu.history" xml:space="preserve">
+        <source>History</source>
+      </trans-unit>
+      
+      <trans-unit id="tx_restclientui_domain_model_history">
+				<source>History</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.method">
+				<source>Method</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.header">
+				<source>Header</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.fields">
+				<source>Fields</source>
+			</trans-unit>
+      <trans-unit id="tx_restclientui_domain_model_history.tstamp">
+				<source>Time</source>
+			</trans-unit>
+      <trans-unit id="tx_restclientui_domain_model_history.date">
+				<source>Date</source>
+			</trans-unit>
+      <trans-unit id="tx_restclientui_domain_model_history.time">
+				<source>Time</source>
+			</trans-unit>
+      
+      
+      <trans-unit id="rcui.message.history.empty" xml:space="preserve">
+        <source>No request is present.</source>
+      </trans-unit>
+      
+      
       
       
     </body>

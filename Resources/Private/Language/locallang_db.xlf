@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-12-04T08:09:16Z" product-name="restclient_ui">
+		<header/>
+		<body>
+			<trans-unit id="tx_restclientui_domain_model_history">
+				<source>Restclient UI History</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.method">
+				<source>Method</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.header">
+				<source>Header</source>
+			</trans-unit>
+			<trans-unit id="tx_restclientui_domain_model_history.fields">
+				<source>Fields</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

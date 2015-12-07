@@ -7,7 +7,18 @@
            
       //Dynamic fields
       var countHeader = 0;
-      var countData = 0;                
+      var countData = 0; 
+      
+      //Set counter from history
+      var lastHistoryHeaderElement = jQuery("input[name^=\"tx_restclientui_tools_restclientuirestclientui[request][header]\"]").last()[0];
+      if (typeof lastHistoryHeaderElement !== "undefined") {      
+        countHeader = lastHistoryHeaderElement.name.match(/\d+/)[0];
+      }
+      var lastHistoryDataElement = jQuery("input[name^=\"tx_restclientui_tools_restclientuirestclientui[request][data]\"]").last()[0];
+      if (typeof lastHistoryDataElement !== "undefined") {      
+        countData = lastHistoryDataElement.name.match(/\d+/)[0];
+      }
+                  
       jQuery("#rcui-button-add-header").on("click", function(){        
         jQuery(this).before("<div class='rcui-row'><input type='text' name='tx_restclientui_tools_restclientuirestclientui[request][header]["+ ++countHeader +"]' class='w40' ><input type='text' name='tx_restclientui_tools_restclientuirestclientui[request][header]["+ ++countHeader +"]'  class='w40' ><button type='button' class='rcui-button-remove-header'>-</button></div>");        
       });

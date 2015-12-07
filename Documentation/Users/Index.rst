@@ -9,7 +9,10 @@
 Users manual
 ============
 
-The backend module "Rest client UI" will show the form to send the requests.
+REST Request
+^^^^^^^^^^^^
+
+The Backend module Rest client UI, in "REST request" section, will show the form to send the requests.
 
 .. image:: images/request.png
 
@@ -23,3 +26,14 @@ The backend module "Rest client UI" will show the form to send the requests.
 | 
 | The response will consist of many information: the HTTP status code, the elapsed time, the headers, and the body.
 |
+
+History
+^^^^^^^^^^^^
+
+| If you have enabled in configuration, the "History" section will show the history of requests.
+| You can edit or remove the requests.
+|
+
+.. image:: images/history.png
+
+
