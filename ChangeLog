@@ -1,3 +1,7 @@
+2015-12-20  Tommaso Sacramone  <tommasosacramone.www@gmail.com>
+  * Compatibility fixes for TYPO3 7.6 LTS
+  * Release of restclient_ui 1.1.1 in TER
+
 2015-12-07  Tommaso Sacramone  <tommasosacramone.www@gmail.com>
   * Add History
 

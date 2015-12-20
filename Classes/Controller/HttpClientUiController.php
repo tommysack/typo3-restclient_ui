@@ -95,7 +95,7 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
   protected function getWsResponse($methodRequest, $urlRequest, $headerRequest, $dataRequest) {
     $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restclient_ui']);
     
-    $objectManager = GeneralUtility :: makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');  
+    $objectManager = GeneralUtility :: makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');  
     
     //Request
     $httpClientRequest = $objectManager -> get('TS\Restclient\Client\HttpClientRequest');
@@ -210,9 +210,9 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
   }
   
   protected function setHistory($methodRequest, $urlRequest, $headerRequest, $dataRequest, $storage = null) {
-    $objectManager = GeneralUtility :: makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
+    $objectManager = GeneralUtility :: makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 
-    $history = $objectManager -> create('TS\RestclientUi\Domain\Model\History');
+    $history = $objectManager -> get('TS\RestclientUi\Domain\Model\History');
     if (isset($storage)) {       
       $history -> setPid($storage);
     }    
@@ -248,9 +248,9 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
       $history -> setFields(serialize($data));
     }
     
-    $historyRepository = $objectManager -> create('\TS\RestclientUi\Domain\Repository\HistoryRepository');        
+    $historyRepository = $objectManager -> get('TS\RestclientUi\Domain\Repository\HistoryRepository');        
     $historyRepository -> add($history);
-    $persistenceManager = $objectManager -> create('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager'); 
+    $persistenceManager = $objectManager -> get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager'); 
     $persistenceManager -> persistAll();
   }
   

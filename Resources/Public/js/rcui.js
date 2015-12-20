@@ -1,4 +1,4 @@
-(function(){
+(function(jQuery){
   jQuery(document).ready(function(){
     
     var init = function() {
@@ -99,4 +99,4 @@
     init();
   });
   
-}());
+}(TYPO3.jQuery || jQuery));
