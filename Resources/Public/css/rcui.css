@@ -29,14 +29,16 @@ h2 {
 #rcui-request {
   color: #777;
   background-color: #f6f7fa;  
-  border: 1px solid #c2cbcf;
+  border-top: 1px solid #c2cbcf;
+  border-bottom: 1px solid #c2cbcf;
   padding: 1.25em;
 }
 
 #rcui-response-details {
   color: #777;
   background-color: #f6f7fa;  
-  border: 1px solid #c2cbcf;
+  border-top: 1px solid #c2cbcf;
+  border-bottom: 1px solid #c2cbcf;
   padding: 1.25em;  
 }
 
@@ -50,4 +52,28 @@ h2 {
   margin-top: 1.25em;
 }
 
+#rcui-history-table {
+  width: 100%;  
+}
+
+#rcui-history-table thead th {  
+  background-color: #666;
+  padding: 5px;
+  color: white;
+  font-weight: bold; 
+}
+
+#rcui-history-table tbody td {  
+  background-color: #f1f1f1;
+  padding: 5px; 
+  text-align: center; 
+}
+
+#rcui-history-table tbody tr:hover td {  
+  background-color: #dedede;
+}
+
+#rcui-history-table tbody td a {  
+  text-decoration: none;
+}
 

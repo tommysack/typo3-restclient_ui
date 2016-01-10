@@ -37,6 +37,16 @@ use TS\Restclient\Client\HttpClientException;
  */
 class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
   
+  /**
+	 * historyRepository
+	 *
+	 * @var \TS\RestclientUi\Domain\Repository\HistoryRepository
+	 * @inject
+	 */
+	protected $historyRepository = NULL;
+  
+  protected $extConf = NULL;
+  
   protected $httpClientUiMethods = array(    
     HttpClientRequest::METHOD_GET => HttpClientRequest::METHOD_GET,
     HttpClientRequest::METHOD_POST => HttpClientRequest::METHOD_POST,
@@ -44,7 +54,28 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     HttpClientRequest::METHOD_DELETE => HttpClientRequest::METHOD_DELETE       
   );
   
-  public function indexAction() {    
+  public function initializeAction() {
+    $this -> extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restclient_ui']);
+    
+    if ($this -> extConf['history_storage'] !== "") {  
+      $querySettings = $this -> historyRepository -> createQuery() -> getQuerySettings();
+      $querySettings -> setStoragePageIds(array(intval($this -> extConf['history_storage'])));
+      $this -> historyRepository -> setDefaultQuerySettings($querySettings);
+    }
+  }
+  
+  public function indexAction() {
+    if ($this -> request -> hasArgument('history')) {
+      $historyUid = $this -> request -> getArgument('history');
+      $history = $this -> historyRepository -> findByUid($historyUid);
+      $request = array();
+      $request['url'] = $history -> getUrl();
+      $request['method'] = $history -> getMethod();
+      $request['header'] = unserialize($history -> getHeader());
+      $request['data'] = unserialize($history -> getFields());      
+      $this -> view -> assign('request', $request);  
+    }
+    
     $this -> view -> assign('methods', $this -> httpClientUiMethods);  
   }
   
@@ -61,20 +92,22 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     return $data;
   }
   
-  protected function getWsResponse($request) {
-    $objectManager = GeneralUtility :: makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');  
+  protected function getWsResponse($methodRequest, $urlRequest, $headerRequest, $dataRequest) {
+    $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restclient_ui']);
+    
+    $objectManager = GeneralUtility :: makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');  
     
     //Request
     $httpClientRequest = $objectManager -> get('TS\Restclient\Client\HttpClientRequest');
-    $httpClientRequest -> setMethod($request['method']);
-    $httpClientRequest -> setUrl($request['url']);
-    if (isset($request['header'])) {
+    $httpClientRequest -> setMethod($methodRequest);
+    $httpClientRequest -> setUrl($urlRequest);
+    if (isset($headerRequest)) {
       $header = array();
-      foreach ($request['header'] as $i => $v) {
+      foreach ($headerRequest as $i => $v) {
         $index = intval($i);
         if ($index % 2 !== 0) {
-          $name = $request['header'][$index];
-          $value = $request['header'][$index+1];
+          $name = $headerRequest[$index];
+          $value = $headerRequest[$index+1];
           $header[] = $name.": ".$value; 
         }
         else {
@@ -83,12 +116,12 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
       }      
       $httpClientRequest -> setHeader($header);
     }
-    if (isset($request['data'])) {
+    if (isset($dataRequest)) {
       $data = array();      
-      foreach ($request['data'] as $i => $v) {
+      foreach ($dataRequest as $i => $v) {
         $index = intval($i);        
         if ($index % 2 !== 0) {
-          $data[$v] = $request['data'][$i+1];
+          $data[$v] = $dataRequest[$i+1];
         }
         else {
           continue;
@@ -98,8 +131,7 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }      
     
     //Client    
-    $httpClient =  $objectManager -> get('TS\Restclient\Client\HttpClient');    
-    $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restclient_ui']);
+    $httpClient =  $objectManager -> get('TS\Restclient\Client\HttpClient');        
     if ($extConf['client_use_restclient_settings'] === "1") {//It will use the restclient configuration, it will ignore the next fields      
       $httpClient -> setErrorThrowException(true);//Force
     }
@@ -177,11 +209,67 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     return $response;
   }
   
-  public function sendRequest($params = array(), \TYPO3\CMS\Core\Http\AjaxRequestHandler &$ajaxObj = NULL) {
-   
+  protected function setHistory($methodRequest, $urlRequest, $headerRequest, $dataRequest, $storage = null) {
+    $objectManager = GeneralUtility :: makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+
+    $history = $objectManager -> get('TS\RestclientUi\Domain\Model\History');
+    if (isset($storage)) {       
+      $history -> setPid($storage);
+    }    
+    $history -> setMethod($methodRequest);
+    $history -> setUrl($urlRequest);
+    $header = array();
+    foreach ($headerRequest as $i => $v) {
+      $index = intval($i);
+      if ($index % 2 !== 0) {
+        $name = $headerRequest[$index];
+        $value = $headerRequest[$index+1];
+        $header[$index] = array("name" => $name, "value" => $value); 
+      }
+      else {
+        continue;
+      }
+    }
+    if (count($header) > 0) {
+      $history -> setHeader(serialize($header));
+    }
+    foreach ($dataRequest as $i => $v) {
+      $index = intval($i);
+      if ($index % 2 !== 0) {
+        $name = $dataRequest[$index];
+        $value = $dataRequest[$index+1];
+        $data[$index] = array("name" => $name, "value" => $value); 
+      }
+      else {
+        continue;
+      }
+    }
+    if (count($data) > 0) {
+      $history -> setFields(serialize($data));
+    }
+    
+    $historyRepository = $objectManager -> get('TS\RestclientUi\Domain\Repository\HistoryRepository');        
+    $historyRepository -> add($history);
+    $persistenceManager = $objectManager -> get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager'); 
+    $persistenceManager -> persistAll();
+  }
+  
+  public function sendRequest ($params = array(), \TYPO3\CMS\Core\Http\AjaxRequestHandler &$ajaxObj = NULL) {
+    $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restclient_ui']);
+       
     $rcuiRequest = GeneralUtility :: _POST('tx_restclientui_tools_restclientuirestclientui');
     if (isset($rcuiRequest) && is_array($rcuiRequest) && isset($rcuiRequest['request']) && is_array($rcuiRequest['request'])) {
-      $response = $this -> getWsResponse($rcuiRequest['request']);
+      $methodRequest = isset($rcuiRequest['request']['method']) ? $rcuiRequest['request']['method'] : null;
+      $urlRequest = isset($rcuiRequest['request']['url']) ? $rcuiRequest['request']['url'] : null;
+      $headerRequest = isset($rcuiRequest['request']['header']) ? $rcuiRequest['request']['header'] : null;
+      $dataRequest = isset($rcuiRequest['request']['data']) ? $rcuiRequest['request']['data'] : null;      
+      
+      if ($extConf['history_enable'] === "1") {        
+        $historyStorage = null;
+        if ($extConf['history_storage'] !== "") $historyStorage = intval($extConf['history_storage']);
+        $this -> setHistory($methodRequest, $urlRequest, $headerRequest, $dataRequest, $historyStorage); 
+      }
+      $response = $this -> getWsResponse($methodRequest, $urlRequest, $headerRequest, $dataRequest);
     }
     else {
       $response = array('status'=> array('success' => false));
@@ -190,6 +278,7 @@ class HttpClientUiController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     $ajaxObj->setContentFormat('json');
     $ajaxObj->addContent('response', $response);
   } 
+  
 }
 
 ?>

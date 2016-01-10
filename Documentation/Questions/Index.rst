@@ -8,3 +8,5 @@
 Questions and feedback
 ---------------------
 If you have questions, feedback or suggestions you can send me a mail.
+
+`REST client UI on forge.typo3.org <https://forge.typo3.org/projects/extension-restclient_ui>`_.

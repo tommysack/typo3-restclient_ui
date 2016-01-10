@@ -1,5 +1,5 @@
  # cat=basic//5; type=boolean; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_use_restclient_settings
-client_use_restclient_settings = 
+client_use_restclient_settings = false 
 
  # cat=basic//8; type=options[=,info=1,warning=2,error=3,critical=4]; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.error_log
 error_log = 
@@ -11,7 +11,7 @@ client_connection_timeout =
 client_timeout = 
 
  # cat=basic//30; type=boolean; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_follow_redirect
-client_follow_redirect = 
+client_follow_redirect = false
 
 # cat=basic//40; type=integer; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_max_redirect
 client_max_redirect = 
@@ -34,4 +34,9 @@ client_proxy_auth_scheme =
  # cat=basic//100; type=string; label=LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.client_user_agent
 client_user_agent =
 
+ # cat=basic//110; type=boolean; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.history_enable
+history_enable = false
+
+# cat=basic//120; type=integer; label= LLL:EXT:restclient_ui/Resources/Private/Language/locallang.xlf:extmng.history_storage
+history_storage = 
 

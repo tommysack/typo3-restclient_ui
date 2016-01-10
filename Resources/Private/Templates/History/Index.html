@@ -1,0 +1,46 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+  
+  <h2 id="rcui-history-header"><f:translate key="rcui.header.history" /></h2>   
+  <f:if condition="{histories}">
+    <f:then>
+      <table id="rcui-history-table">
+        <thead>
+          <tr>
+            <th class="center"><f:translate key="tx_restclientui_domain_model_history.date" /> </th>
+            <th class="center"><f:translate key="tx_restclientui_domain_model_history.time" /> </th>
+            <th class="center"><f:translate key="tx_restclientui_domain_model_history.url" /></th>
+            <th class="center"><f:translate key="tx_restclientui_domain_model_history.method" /> </th>
+            <th></th>       
+          </tr>
+        </thead>
+        <tbody>
+          <f:for each="{histories}" as="history">
+            <tr>
+              <td>
+                <f:format.date format="d-m-Y">{history.tstamp}</f:format.date>  
+              </td>
+              <td>
+                <f:format.date format="H:i:s">{history.tstamp}</f:format.date>  
+              </td>        
+              <td>
+                {history.url}  
+              </td>
+              <td>
+                {history.method}
+              </td>
+              <td>
+                <f:link.action controller="HttpClientUi" action="index" arguments="{history: history.uid}" ><f:translate key="rcui.button.edit" /></f:link.action>&nbsp;&nbsp;&nbsp;
+                <f:link.action controller="History" action="delete" arguments="{history: history.uid}"><f:translate key="rcui.button.remove" /></f:link.action>
+              </td>
+            </tr>
+          </f:for>
+        </tbody>
+      </table>
+    </f:then>
+    <f:else>
+      <f:translate key="rcui.message.history.empty" />
+    </f:else>
+  </f:if>
+</f:section>  

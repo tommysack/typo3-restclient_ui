@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-12-04T08:09:16Z" product-name="restclient_ui">
+		<header/>
+		<body>
+			<trans-unit id="url.description">
+				<source>url</source>
+			</trans-unit>
+			<trans-unit id="method.description">
+				<source>method</source>
+			</trans-unit>
+			<trans-unit id="header.description">
+				<source>header</source>
+			</trans-unit>
+			<trans-unit id="fields.description">
+				<source>fields</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
